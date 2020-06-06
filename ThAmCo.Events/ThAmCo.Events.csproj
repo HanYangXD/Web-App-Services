@@ -6,6 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\StaffBookings\" />
+    <Folder Include="Views\Staffs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThAmCo.Venues\ThAmCo.Venues.csproj" />
   </ItemGroup>
 
 </Project>

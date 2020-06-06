@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 
 namespace ThAmCo.Events.Data
 {
@@ -9,6 +10,8 @@ namespace ThAmCo.Events.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<GuestBooking> Guests { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<StaffBooking> StaffBookings { get; set; }
 
         private IHostingEnvironment HostEnv { get; }
 
@@ -46,6 +49,14 @@ namespace ThAmCo.Events.Data
                    .Property(e => e.TypeId)
                    .IsFixedLength();
 
+            builder.Entity<StaffBooking>()
+                    .HasKey(b => new { b.StaffId, b.EventId });
+
+            builder.Entity<Staff>()
+                    .HasMany(a => a.StaffBooking)
+                    .WithOne(b => b.Staff)
+                    .HasForeignKey(c => c.StaffId);
+
             // seed data for debug / development testing
             if (HostEnv != null && HostEnv.IsDevelopment())
             {
@@ -65,6 +76,18 @@ namespace ThAmCo.Events.Data
                     new GuestBooking { CustomerId = 2, EventId = 1, Attended = false },
                     new GuestBooking { CustomerId = 1, EventId = 2, Attended = false },
                     new GuestBooking { CustomerId = 3, EventId = 2, Attended = false }
+                );
+                builder.Entity<Staff>().HasData(
+                    new Staff { StaffId = 1, Surname = "Choo", FirstName = "Han Yang", Email = "hyhy@fcuc.com", FirstAid = true },
+                    new Staff { StaffId = 2, Surname = "Law", FirstName = "Ben Ben", Email = "Benben@fcuc.com", FirstAid = false },
+                    new Staff { StaffId = 3, Surname = "Nero", FirstName = "Padoru", Email = "Padoru@fcuc.com", FirstAid = true }
+                );
+
+                builder.Entity<StaffBooking>().HasData(
+                    new StaffBooking { StaffId = 1, EventId = 1 },
+                    new StaffBooking { StaffId = 2, EventId = 1 },
+                    new StaffBooking { StaffId = 1, EventId = 2 },
+                    new StaffBooking { StaffId = 3, EventId = 2 }
                 );
             }
         }
