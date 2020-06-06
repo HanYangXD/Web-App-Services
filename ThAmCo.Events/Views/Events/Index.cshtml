@@ -24,6 +24,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.TypeId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VenueCode)
+            </th>
+            <th>
+                Guest
+            </th>
+            <th>
+                Staff
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,6 +50,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TypeId)
+            </td>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.VenueCode)
+            </th>
+            <td>
+                @item.Bookings.Count()
+            </td>
+            <td>
+                @item.Bookings.Count()
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

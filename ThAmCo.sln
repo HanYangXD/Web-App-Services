@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo.Events", "ThAmCo.Events\ThAmCo.Events.csproj", "{9DBE08FA-B590-4B1E-A2DB-D867B2B76CC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo.Venues", "ThAmCo.Venues\ThAmCo.Venues.csproj", "{6BE1B80D-DD06-424E-BD23-FA019B0FB699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThAmCo.Catering", "ThAmCo.Catering\ThAmCo.Catering.csproj", "{34086470-4603-4896-94F6-18D5CFC0F13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo.Catering", "ThAmCo.Catering\ThAmCo.Catering.csproj", "{34086470-4603-4896-94F6-18D5CFC0F13A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

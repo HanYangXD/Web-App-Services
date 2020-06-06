@@ -10,11 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\StaffBookings\" />
-    <Folder Include="Views\Staffs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ThAmCo.Venues\ThAmCo.Venues.csproj" />
   </ItemGroup>
 

@@ -16,7 +16,6 @@ namespace ThAmCo.Events.ViewModels.Guests
             EventTitle = eventtitle;
             CustomerSurname = customersurname;
             //Attended = attended;
-
         }
 
         public List<Data.GuestBooking> CustomerList { get; set; }

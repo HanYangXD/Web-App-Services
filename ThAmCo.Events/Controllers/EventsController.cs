@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Controllers
         // GET: Events
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Events.ToListAsync());
+            return View(await _context.Events.Include(b=>b.Bookings).Include(b=>b.StaffBooking).ToListAsync());
         }
 
         // GET: Events/Details/5
@@ -173,7 +173,7 @@ namespace ThAmCo.Events.Controllers
              */
             HttpClient client = new HttpClient();
             var VenueBuilder = new UriBuilder("http://localhost");
-            VenueBuilder.Port = 22263;
+            VenueBuilder.Port = 23652;
             VenueBuilder.Path = "api/Availability";
 
             /**
@@ -226,7 +226,7 @@ namespace ThAmCo.Events.Controllers
                 HttpClient client1 = new HttpClient();
 
                 var VenueBuilder = new UriBuilder("http://localhost");
-                VenueBuilder.Port = 22263;
+                VenueBuilder.Port = 23652;
                 VenueBuilder.Path = "api/Reservations/" + @event.VenueCode;
                 client1.DefaultRequestHeaders.Accept.ParseAdd("application/json");
                 string url = VenueBuilder.ToString();
