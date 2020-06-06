@@ -18,6 +18,23 @@ namespace ThAmCo.Events.Views.StaffBookings
             _context = context;
         }
 
+
+        public async Task<IActionResult> StaffFilteredIndex(int id/*, string customerName, string customerSurname*/)
+        {
+            var eventsDbContext = _context.StaffBookings
+                .Include(t => t.Staff)
+                .Include(t => t.Event)
+                .Where(t => t.StaffId == id);
+
+            var indexVm = new ThAmCo.Events.ViewModels.Staffs.Index(
+                await eventsDbContext.ToListAsync(),
+                id,
+                0);
+
+            return View("StaffIndex", indexVm);
+        }
+
+
         // GET: StaffBookings
         public async Task<IActionResult> Index()
         {

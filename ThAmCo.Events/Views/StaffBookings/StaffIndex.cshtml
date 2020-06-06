@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ThAmCo.Events.Data.StaffBooking>
+﻿@model ThAmCo.Events.ViewModels.Staffs.Index
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Staff)
+                @Html.DisplayNameFor(model => model.StaffId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Event)
+                @Html.DisplayNameFor(model => model.EventId)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.StaffList)
         {
             <tr>
                 <td>

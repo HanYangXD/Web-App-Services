@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Controllers
         // GET: Events
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Events.Include(b=>b.Bookings).Include(b=>b.StaffBooking).ToListAsync());
+            return View(await _context.Events.Include(b=>b.Bookings).ToListAsync());
         }
 
         // GET: Events/Details/5
