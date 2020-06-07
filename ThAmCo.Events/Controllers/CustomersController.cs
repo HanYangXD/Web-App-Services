@@ -148,5 +148,28 @@ namespace ThAmCo.Events.Controllers
         {
             return _context.Customers.Any(e => e.Id == id);
         }
+
+
+        public async Task<IActionResult> PermanentDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var customer = await _context.Customers
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            customer.FirstName = "null";
+            customer.Surname = "null";
+            customer.Email = "null";
+
+            _context.Update(customer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

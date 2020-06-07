@@ -36,6 +36,75 @@
         </dd>
     </dl>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.FirstOrDefault().Customer.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.FirstOrDefault().Customer.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.FirstOrDefault().Customer.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bookings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Email)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffBookings.FirstOrDefault().Staff.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffBookings.FirstOrDefault().Staff.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffBookings.FirstOrDefault().Staff.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffBookings.FirstOrDefault().Staff.FirstAid)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StaffBookings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.FirstAid)
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

@@ -40,6 +40,7 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="PermanentDelete" asp-route-id="@item.Id">Delete Permanently</a> |
                 <a asp-controller="GuestBookings" asp-action="CustomerFilteredIndex" asp-route-id="@item.Id" asp-route-customerName="@item.FirstName" asp-route-customer-surname="@item.Surname">Event Booking</a>
             </td>
         </tr>
