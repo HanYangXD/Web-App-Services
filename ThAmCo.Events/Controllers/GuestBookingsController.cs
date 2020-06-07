@@ -47,7 +47,7 @@ namespace ThAmCo.Events.Controllers
                 0,
                 id, "", "", "");
 
-            return View("CustomerIndex", indexVm);
+            return View("EventIndex", indexVm);
         }
 
 

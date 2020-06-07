@@ -66,7 +66,7 @@ namespace ThAmCo.Events.Views.StaffBookings
         public IActionResult Create()
         {
             ViewData["EventId"] = new SelectList(_context.Events, "Id", "Title");
-            ViewData["StaffId"] = new SelectList(_context.Staffs, "StaffId", "Email");
+            ViewData["StaffId"] = new SelectList(_context.Staffs, "StaffId", "FirstName", "StaffId", "Surname");
             return View();
         }
 

@@ -18,10 +18,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EventTitle)
+                @*@Html.DisplayNameFor(model => model.EventTitle)*@
+                Event
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerName)
+                @*@Html.DisplayNameFor(model => model.CustomerName)*@
+                Customer Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Attended)
@@ -38,7 +40,8 @@
                     @Html.DisplayFor(modelItem => item.Event.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Customer.Email)
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                    @Html.DisplayFor(modelItem => item.Customer.Surname)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Attended)
