@@ -6,18 +6,20 @@
 
 <h2>Create</h2>
 
-<h4>GuestBooking</h4>
+<h4>Guest Booking</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
+                @*<label asp-for="CustomerId" class="control-label"></label>*@
+                <label class="control-label">Customer Name</label>
                 <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="EventId" class="control-label"></label>
+                @*<label asp-for="EventId" class="control-label"></label>*@
+                <label class="control-label">Event</label>
                 <select asp-for="EventId" class ="form-control" asp-items="ViewBag.EventId"></select>
             </div>
             <div class="form-group">
