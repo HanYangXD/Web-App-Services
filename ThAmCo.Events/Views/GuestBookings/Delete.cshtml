@@ -8,14 +8,15 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>GuestBooking</h4>
+    <h4>Guest Booking</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Customer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Customer.Email)
+            @Html.DisplayFor(model => model.Customer.FirstName)
+            @Html.DisplayFor(model => model.Customer.Surname)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Event)
