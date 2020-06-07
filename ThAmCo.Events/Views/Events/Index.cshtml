@@ -22,16 +22,19 @@
                 @Html.DisplayNameFor(model => model.Duration)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeId)
+                @Html.DisplayNameFor(model => model.VenueCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VenueCode)
+                Party Type
             </th>
             <th>
                 Guest
             </th>
             <th>
                 Staff
+            </th>
+            <th>
+                Warning
             </th>
             <th></th>
         </tr>
@@ -49,21 +52,34 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeId)
+                @Html.DisplayFor(modelItem => item.VenueCode)
             </td>
             <th>
-                @Html.DisplayNameFor(modelItem => item.VenueCode)
+                @Html.DisplayFor(modelItem => item.TypeId)
             </th>
             <td>
                 @item.Bookings.Count()
             </td>
             <td>
-                @item.Bookings.Count()
+                @item.StaffBookings.Count()
+            </td>
+            <td>
+                @if ((item.StaffBookings.Count() <= item.Bookings.Count() / 10))
+                {
+            <p>
+                Warning: There is not enough staff at the event
+            </p>                }
+                @if ((item.StaffBookings.Where(e => e.Staff.FirstAid).Count() == 0))
+                {
+            <p>
+                Warning: There is no staff with first aid training at the event.
+            </p>                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Cancel" asp-route-id="@item.Id">Cancel</a> |
                 <a asp-controller="GuestBookings" asp-action="EventFilteredIndex" asp-route-id="@item.Id">Guest Bookng</a> |
                 <a asp-action="ReserveVenue" asp-route-id="@item.Id">Reservations</a>
             </td>

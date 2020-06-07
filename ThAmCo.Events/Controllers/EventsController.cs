@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
-using ThAmCo.Venues.Models;
+using ThAmCo.Events.Services;
 
 namespace ThAmCo.Events.Controllers
 {
@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Controllers
         // GET: Events
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Events.Include(b=>b.Bookings).ToListAsync());
+            return View(await _context.Events.Include(b=>b.Bookings).Include(c=>c.StaffBookings).ThenInclude(s=>s.Staff).ToListAsync());
         }
 
         // GET: Events/Details/5
@@ -152,6 +152,7 @@ namespace ThAmCo.Events.Controllers
             return _context.Events.Any(e => e.Id == id);
         }
 
+        //GET: Events/ReserveVenue/5
         public async Task<IActionResult> ReserveVenue(int? id)
         {
             if (id == null)
@@ -211,7 +212,7 @@ namespace ThAmCo.Events.Controllers
         }
 
         //POST: Events/ReserveVenue/5
-        public async Task<IActionResult> ConfirmReservation(int id, string VenueCode, string StaffId)
+        public async Task<IActionResult> ConfirmReservation(int id, string VenueCode, int StaffId)
         {
 
             var @event = await _context.Events
@@ -244,7 +245,7 @@ namespace ThAmCo.Events.Controllers
             }
 
             HttpClient client = new HttpClient();
-            client.BaseAddress = new System.Uri("http://localhost:22263");
+            client.BaseAddress = new System.Uri("http://localhost:23652");
             client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
 
             ReservationPostDto req = new ReservationPostDto

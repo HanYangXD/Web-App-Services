@@ -1,8 +1,6 @@
 ﻿@model ThAmCo.Events.Data.Event
 
-@{
-    ViewData["Title"] = "ReserveVenue";
-}
+@{ ViewData["Title"] = "ReserveVenue"; }
 
 <h2>Confirm Reservation</h2>
 
@@ -28,7 +26,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts
-{
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

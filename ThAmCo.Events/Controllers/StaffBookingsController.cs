@@ -144,9 +144,9 @@ namespace ThAmCo.Events.Views.StaffBookings
         }
 
         // GET: StaffBookings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? sid, int? eid)
         {
-            if (id == null)
+            if (sid == null || eid == null)
             {
                 return NotFound();
             }
@@ -154,7 +154,7 @@ namespace ThAmCo.Events.Views.StaffBookings
             var staffBooking = await _context.StaffBookings
                 .Include(s => s.Event)
                 .Include(s => s.Staff)
-                .FirstOrDefaultAsync(m => m.StaffId == id);
+                .FirstOrDefaultAsync(m => m.StaffId == sid && m.EventId == eid);
             if (staffBooking == null)
             {
                 return NotFound();
@@ -166,9 +166,9 @@ namespace ThAmCo.Events.Views.StaffBookings
         // POST: StaffBookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Dictionary<string, int> deletePairs)
         {
-            var staffBooking = await _context.StaffBookings.FindAsync(id);
+            var staffBooking = await _context.StaffBookings.FirstOrDefaultAsync(a => a.StaffId == deletePairs["StaffId"] && a.EventId == deletePairs["EventId"]);
             _context.StaffBookings.Remove(staffBooking);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -25,7 +25,9 @@ namespace ThAmCo.Events.Models
 
         public List<GuestBooking> GuestBookings { get; set; }
 
-        //public List<StaffBooking> StaffBookings { get; set; }
+        public List<StaffBooking> StaffBookings { get; set; }
+
+        public string VenueCode { get; set; }
     }
 
     public class EventDbContext : DbContext

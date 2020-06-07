@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
+using ThAmCo.Events.Data;
 
 namespace ThAmCo.Events.Data
 {
@@ -10,8 +10,8 @@ namespace ThAmCo.Events.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<GuestBooking> Guests { get; set; }
-        public DbSet<Staff> Staffs { get; set; }
-        public DbSet<StaffBooking> StaffBookings { get; set; }
+        public DbSet<ThAmCo.Events.Data.Staff> Staffs { get; set; }
+        public DbSet<ThAmCo.Events.Data.StaffBooking> StaffBookings { get; set; }
 
         private IHostingEnvironment HostEnv { get; }
 
@@ -53,9 +53,9 @@ namespace ThAmCo.Events.Data
                     .HasKey(b => new { b.StaffId, b.EventId });
 
             builder.Entity<Staff>()
-                    .HasMany(a => a.StaffBooking)
+                    .HasMany(c => c.StaffBooking)
                     .WithOne(b => b.Staff)
-                    .HasForeignKey(c => c.StaffId);
+                    .HasForeignKey(b => b.StaffId);
 
             // seed data for debug / development testing
             if (HostEnv != null && HostEnv.IsDevelopment())
@@ -67,7 +67,7 @@ namespace ThAmCo.Events.Data
                 );
 
                 builder.Entity<Event>().HasData(
-                    new Event { Id = 1, Title = "Bob's Big 50", Date = new DateTime(2016, 4, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "PTY" },
+                    new Event { Id = 1, Title = "Bob's Big 60", Date = new DateTime(2016, 4, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "PTY" },
                     new Event { Id = 2, Title = "Best Wedding Yet", Date = new DateTime(2018, 12, 1), Duration = new TimeSpan(12, 0, 0), TypeId = "WED" }
                 );
 
@@ -78,7 +78,7 @@ namespace ThAmCo.Events.Data
                     new GuestBooking { CustomerId = 3, EventId = 2, Attended = false }
                 );
                 builder.Entity<Staff>().HasData(
-                    new Staff { StaffId = 1, Surname = "Choo", FirstName = "Han Yang", Email = "hyhy@fcuc.com", FirstAid = true },
+                    new Staff { StaffId = 1, Surname = "Ch", FirstName = "Han Yang", Email = "hyhy@fcuc.com", FirstAid = true },
                     new Staff { StaffId = 2, Surname = "Law", FirstName = "Ben Ben", Email = "Benben@fcuc.com", FirstAid = false },
                     new Staff { StaffId = 3, Surname = "Nero", FirstName = "Padoru", Email = "Padoru@fcuc.com", FirstAid = true }
                 );
