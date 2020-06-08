@@ -4,22 +4,32 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
+@*<h2>@Model.CustomerName's Event Booking</h2>*@
+@foreach(var item in Model.CustomerList)
+{
+<h2>
+    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+    @Html.DisplayFor(modelItem => item.Customer.FirstName)'s Event Booking
+</h2>
+    break;
+}
 
 <p>
     <a asp-action="CustomerFilteredCreate">Create New</a>
 </p>
 <span>
-    Total Number of Guests: @Model.CustomerList.ToList().Count() <br>
+    Total Number of Events: @Model.CustomerList.ToList().Count() <br>
+    
     
 
 </span>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 Customer Name
-            </th>
+            </th>*@
             <th>
                 Event
             </th>
@@ -34,10 +44,10 @@
         @foreach (var item in Model.CustomerList)
         {
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Customer.FirstName)
                     @Html.DisplayFor(modelItem => item.Customer.Surname)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Event.Title)
                 </td>

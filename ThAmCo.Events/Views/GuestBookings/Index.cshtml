@@ -4,10 +4,10 @@
     ViewData["Title"] = "Guest Booking";
 }
 
-<h2>Index</h2>
+<h2>Guest Booking</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Booking</a>
 </p>
 <span>
     Total Number of Guests: @Model.ToList().Count() <br>
@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <th>
-                Customer Name
+                Guest Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Event)

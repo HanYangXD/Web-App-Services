@@ -4,54 +4,60 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
+@foreach (var item in Model.CustomerList)
+{ 
+<h2>
+    @Html.DisplayFor(modelItem => item.Event.Title)'s Guest Booking
+</h2>
+    break;
+}
+    <p>
+        <a asp-action="EventFilteredCreate">Create New</a>
+    </p>
+    <span>
+        Total Number of Guests: @Model.CustomerList.ToList().Count() <br>
+        Total Number of Attended Guests: @Model.CustomerList.Where(m => m.Attended).ToList().Count()
 
-<p>
-    <a asp-action="EventFilteredCreate">Create New</a>
-</p>
-<span>
-    Total Number of Guests: @Model.CustomerList.ToList().Count() <br>
-    Total Number of Attended Guests: @Model.CustomerList.Where(m => m.Attended).ToList().Count()
-
-</span>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.EventTitle)*@
-                Event
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.CustomerName)*@
-                Customer Name
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Attended)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model.CustomerList)
-        {
+    </span>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Event.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
-                    @Html.DisplayFor(modelItem => item.Customer.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Attended)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { cid = item.CustomerId, eid = item.EventId }) |
-                    @Html.ActionLink("Details", "Details", new { cid = item.CustomerId, eid = item.EventId }) |
-                    @Html.ActionLink("Delete", "Delete", new { cid = item.CustomerId, eid = item.EventId })
-                </td>
+                @*<th>
+                    
+                    Event
+                </th>*@
+                <th>
+                    @*@Html.DisplayNameFor(model => model.CustomerName)*@
+                    Guest Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Attended)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.CustomerList)
+            {
+                <tr>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Event.Title)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                        @Html.DisplayFor(modelItem => item.Customer.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Attended)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { cid = item.CustomerId, eid = item.EventId }) |
+                        @Html.ActionLink("Details", "Details", new { cid = item.CustomerId, eid = item.EventId }) |
+                        @Html.ActionLink("Delete", "Delete", new { cid = item.CustomerId, eid = item.EventId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

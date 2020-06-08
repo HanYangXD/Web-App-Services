@@ -4,7 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
+
+    @foreach (var item in Model.StaffList)
+    {
+    <h2>
+        @Html.DisplayFor(modelItem => item.Staff.FirstName)
+        @Html.DisplayFor(modelItem => item.Staff.Surname)'s Event Bookings
+    </h2>
+    <h4>
+        Email : 
+        @Html.DisplayFor(modelItem => item.Staff.Email)
+    </h4>
+        break;
+    }
+
 
 <p>
     <a asp-action="Create">Create New</a>
