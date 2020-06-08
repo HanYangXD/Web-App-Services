@@ -106,14 +106,14 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: GuestBookings/Edit/5
-        public async Task<IActionResult> Edit(int? cid, int? eid)
+        public async Task<IActionResult> Edit(int? id, int? eid)
         {
-            if (cid == null || eid == null)
+            if (id == null|| eid == null)
             {
                 return NotFound();
             }
 
-            var guestBooking = await _context.Guests.FindAsync(cid, eid);
+            var guestBooking = await _context.Guests.FindAsync(id, eid);
             if (guestBooking == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace ThAmCo.Events.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GuestBookingExists(guestBooking.CustomerId))
+                    if (!GuestBookingExists(guestBooking.CustomerId, guestBooking.EventId))
                     {
                         return NotFound();
                     }
@@ -191,9 +191,9 @@ namespace ThAmCo.Events.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GuestBookingExists(int id)
+        private bool GuestBookingExists(int cid, int eid)
         {
-            return _context.Guests.Any(e => e.CustomerId == id);
+            return _context.Guests.Any(e => e.CustomerId == cid && e.EventId == eid);
         }
     }
 }
