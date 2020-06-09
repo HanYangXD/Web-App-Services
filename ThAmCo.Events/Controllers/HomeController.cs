@@ -17,14 +17,14 @@ namespace ThAmCo.Events.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "ThreeAmigos Corp. ";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "ThreeAmigos Corp. ";
 
             return View();
         }

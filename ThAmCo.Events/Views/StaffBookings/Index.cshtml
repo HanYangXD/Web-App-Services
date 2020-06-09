@@ -32,8 +32,6 @@
                 @Html.DisplayFor(modelItem => item.Event.Title)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  sid=item.StaffId, eid=item.EventId  }) |
-                @Html.ActionLink("Details", "Details", new {  sid=item.StaffId, eid = item.EventId }) |
                 @Html.ActionLink("Delete", "Delete", new {  sid=item.StaffId, eid = item.EventId })
             </td>
         </tr>

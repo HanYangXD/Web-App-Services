@@ -66,13 +66,13 @@
             <td>
                 @if ((item.StaffBookings.Count() <= item.Bookings.Count() / 10))
                 {
-            <p>
-                Warning: There is not enough staff at the event
+            <p style="color:red;">
+                Warning: Not enough staff assigned to the event
             </p>                }
                 @if ((item.StaffBookings.Where(e => e.Staff.FirstAid).Count() == 0))
                 {
-            <p>
-                Warning: There is no staff with first aid training at the event.
+            <p style="color:red;">
+                Warning: No First Aider assigned to the event.
             </p>                }
             </td>
             <td>
